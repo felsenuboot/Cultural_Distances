@@ -1,0 +1,1337 @@
+    [
+        {
+            "id": 0,
+            "name": "Africa East",
+            "datamapId": "AFE",
+            "isoCode": null,
+            "isoShortCode": null,
+            "scores": {
+                "idv": 27,
+                "ivr": 40,
+                "ltowvs": 32,
+                "mas": 41,
+                "pdi": 64,
+                "uai": 52
+            }
+        },
+        {
+            "id": 6,
+            "name": "Africa West",
+            "datamapId": "AFW",
+            "isoCode": null,
+            "isoShortCode": null,
+            "scores": {
+                "idv": 20,
+                "ivr": 78,
+                "ltowvs": 9,
+                "mas": 46,
+                "pdi": 77,
+                "uai": 54
+            }
+        },
+    {
+        "id": 12,
+        "name": "Albania",
+        "datamapId": "ALB",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 27,
+            "ivr": 15,
+            "ltowvs": 61,
+            "mas": 80,
+            "pdi": 90,
+            "uai": 70
+        }
+    },
+    {
+        "id": 18,
+        "name": "Algeria",
+        "datamapId": "ALG",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 29,
+            "ivr": 32,
+            "ltowvs": 26,
+            "mas": 35,
+            "pdi": 80,
+            "uai": 70
+        }
+    },
+    {
+        "id": 24,
+        "name": "Arab countries",
+        "datamapId": "ARA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 38,
+            "ivr": 34,
+            "ltowvs": 23,
+            "mas": 53,
+            "pdi": 80,
+            "uai": 68
+        }
+    },
+    {
+        "id": 30,
+        "name": "Argentina",
+        "datamapId": "ARG",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 46,
+            "ivr": 62,
+            "ltowvs": 20,
+            "mas": 56,
+            "pdi": 49,
+            "uai": 86
+        }
+    },
+    {
+        "id": 36,
+        "name": "Armenia",
+        "datamapId": "ARM",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 17,
+            "ivr": 25,
+            "ltowvs": 61,
+            "mas": 50,
+            "pdi": 85,
+            "uai": 88
+        }
+    },
+    {
+        "id": 42,
+        "name": "Australia",
+        "datamapId": "AUL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 90,
+            "ivr": 71,
+            "ltowvs": 21,
+            "mas": 61,
+            "pdi": 38,
+            "uai": 51
+        }
+    },
+    {
+        "id": 48,
+        "name": "Austria",
+        "datamapId": "AUT",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 55,
+            "ivr": 63,
+            "ltowvs": 60,
+            "mas": 79,
+            "pdi": 11,
+            "uai": 70
+        }
+    },
+    {
+        "id": 54,
+        "name": "Azerbaijan",
+        "datamapId": "AZE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 28,
+            "ivr": 22,
+            "ltowvs": 61,
+            "mas": 50,
+            "pdi": 85,
+            "uai": 88
+        }
+    },
+    {
+        "id": 60,
+        "name": "Bangladesh",
+        "datamapId": "BAN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 20,
+            "ivr": 20,
+            "ltowvs": 47,
+            "mas": 55,
+            "pdi": 80,
+            "uai": 60
+        }
+    },
+    {
+        "id": 66,
+        "name": "Belgium",
+        "datamapId": "BEL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 75,
+            "ivr": 57,
+            "ltowvs": 82,
+            "mas": 54,
+            "pdi": 65,
+            "uai": 94
+        }
+    },
+    {
+        "id": 72,
+        "name": "Belarus",
+        "datamapId": "BLR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 48,
+            "ivr": 15,
+            "ltowvs": 81,
+            "mas": 20,
+            "pdi": 95,
+            "uai": 95
+        }
+    },
+    {
+        "id": 78,
+        "name": "Bosnia",
+        "datamapId": "BOS",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 40,
+            "ivr": 44,
+            "ltowvs": 70,
+            "mas": 48,
+            "pdi": 90,
+            "uai": 87
+        }
+    },
+    {
+        "id": 84,
+        "name": "Brazil",
+        "datamapId": "BRA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 38,
+            "ivr": 59,
+            "ltowvs": 44,
+            "mas": 49,
+            "pdi": 69,
+            "uai": 76
+        }
+    },
+    {
+        "id": 90,
+        "name": "Burkina Faso",
+        "datamapId": "BUF",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 15,
+            "ivr": 18,
+            "ltowvs": 27,
+            "mas": 50,
+            "pdi": 70,
+            "uai": 55
+        }
+    },
+    {
+        "id": 96,
+        "name": "Bulgaria",
+        "datamapId": "BUL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 30,
+            "ivr": 16,
+            "ltowvs": 69,
+            "mas": 40,
+            "pdi": 70,
+            "uai": 85
+        }
+    },
+    {
+        "id": 102,
+        "name": "Canada",
+        "datamapId": "CAN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 80,
+            "ivr": 68,
+            "ltowvs": 36,
+            "mas": 52,
+            "pdi": 39,
+            "uai": 48
+        }
+    },
+    {
+        "id": 108,
+        "name": "China",
+        "datamapId": "CHI",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 20,
+            "ivr": 24,
+            "ltowvs": 87,
+            "mas": 66,
+            "pdi": 80,
+            "uai": 30
+        }
+    },
+    {
+        "id": 114,
+        "name": "Chile",
+        "datamapId": "CHL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 23,
+            "ivr": 68,
+            "ltowvs": 31,
+            "mas": 28,
+            "pdi": 63,
+            "uai": 86
+        }
+    },
+    {
+        "id": 120,
+        "name": "Colombia",
+        "datamapId": "COL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 13,
+            "ivr": 83,
+            "ltowvs": 13,
+            "mas": 64,
+            "pdi": 67,
+            "uai": 80
+        }
+    },
+    {
+        "id": 126,
+        "name": "Croatia",
+        "datamapId": "CRO",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 33,
+            "ivr": 33,
+            "ltowvs": 58,
+            "mas": 40,
+            "pdi": 73,
+            "uai": 80
+        }
+    },
+    {
+        "id": 132,
+        "name": "Czech Rep",
+        "datamapId": "CZE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 58,
+            "ivr": 29,
+            "ltowvs": 70,
+            "mas": 57,
+            "pdi": 57,
+            "uai": 74
+        }
+    },
+    {
+        "id": 138,
+        "name": "Denmark",
+        "datamapId": "DEN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 74,
+            "ivr": 70,
+            "ltowvs": 35,
+            "mas": 16,
+            "pdi": 18,
+            "uai": 23
+        }
+    },
+    {
+        "id": 144,
+        "name": "Dominican Rep",
+        "datamapId": "DOM",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 38,
+            "ivr": 54,
+            "ltowvs": 13,
+            "mas": 65,
+            "pdi": 65,
+            "uai": 45
+        }
+    },
+    {
+        "id": 150,
+        "name": "Egypt",
+        "datamapId": "EGY",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 13,
+            "ivr": 4,
+            "ltowvs": 7,
+            "mas": 55,
+            "pdi": 80,
+            "uai": 55
+        }
+    },
+    {
+        "id": 156,
+        "name": "Estonia",
+        "datamapId": "EST",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 60,
+            "ivr": 16,
+            "ltowvs": 82,
+            "mas": 30,
+            "pdi": 40,
+            "uai": 60
+        }
+    },
+    {
+        "id": 162,
+        "name": "Ethiopia",
+        "datamapId": "ETH",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 7,
+            "ivr": 46,
+            "ltowvs": 14,
+            "mas": 65,
+            "pdi": 70,
+            "uai": 55
+        }
+    },
+    {
+        "id": 168,
+        "name": "Finland",
+        "datamapId": "FIN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 63,
+            "ivr": 57,
+            "ltowvs": 38,
+            "mas": 26,
+            "pdi": 33,
+            "uai": 59
+        }
+    },
+    {
+        "id": 174,
+        "name": "France",
+        "datamapId": "FRA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 71,
+            "ivr": 48,
+            "ltowvs": 63,
+            "mas": 43,
+            "pdi": 68,
+            "uai": 86
+        }
+    },
+    {
+        "id": 180,
+        "name": "Great Britain",
+        "datamapId": "GBR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 89,
+            "ivr": 69,
+            "ltowvs": 51,
+            "mas": 66,
+            "pdi": 35,
+            "uai": 35
+        }
+    },
+    {
+        "id": 186,
+        "name": "Georgia",
+        "datamapId": "GEO",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 15,
+            "ivr": 32,
+            "ltowvs": 38,
+            "mas": 55,
+            "pdi": 65,
+            "uai": 85
+        }
+    },
+    {
+        "id": 192,
+        "name": "Germany",
+        "datamapId": "GER",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 67,
+            "ivr": 40,
+            "ltowvs": 83,
+            "mas": 66,
+            "pdi": 35,
+            "uai": 65
+        }
+    },
+    {
+        "id": 198,
+        "name": "Greece",
+        "datamapId": "GRE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 35,
+            "ivr": 50,
+            "ltowvs": 45,
+            "mas": 57,
+            "pdi": 60,
+            "uai": 100
+        }
+    },
+    {
+        "id": 204,
+        "name": "Hong Kong",
+        "datamapId": "HOK",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 25,
+            "ivr": 17,
+            "ltowvs": 61,
+            "mas": 57,
+            "pdi": 68,
+            "uai": 29
+        }
+    },
+    {
+        "id": 210,
+        "name": "Hungary",
+        "datamapId": "HUN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 80,
+            "ivr": 31,
+            "ltowvs": 58,
+            "mas": 88,
+            "pdi": 46,
+            "uai": 82
+        }
+    },
+    {
+        "id": 216,
+        "name": "Iceland",
+        "datamapId": "ICE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 83,
+            "ivr": 67,
+            "ltowvs": 28,
+            "mas": 10,
+            "pdi": 30,
+            "uai": 50
+        }
+    },
+    {
+        "id": 222,
+        "name": "Indonesia",
+        "datamapId": "IDO",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 14,
+            "ivr": 38,
+            "ltowvs": 62,
+            "mas": 46,
+            "pdi": 78,
+            "uai": 48
+        }
+    },
+    {
+        "id": 228,
+        "name": "India",
+        "datamapId": "IND",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 48,
+            "ivr": 26,
+            "ltowvs": 51,
+            "mas": 56,
+            "pdi": 77,
+            "uai": 40
+        }
+    },
+    {
+        "id": 234,
+        "name": "Iran",
+        "datamapId": "IRA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 41,
+            "ivr": 40,
+            "ltowvs": 14,
+            "mas": 43,
+            "pdi": 58,
+            "uai": 59
+        }
+    },
+    {
+        "id": 240,
+        "name": "Ireland",
+        "datamapId": "IRE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 70,
+            "ivr": 65,
+            "ltowvs": 24,
+            "mas": 68,
+            "pdi": 28,
+            "uai": 35
+        }
+    },
+    {
+        "id": 246,
+        "name": "Iraq",
+        "datamapId": "IRQ",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 25,
+            "ivr": 17,
+            "ltowvs": 25,
+            "mas": 53,
+            "pdi": 97,
+            "uai": 96
+        }
+    },
+    {
+        "id": 252,
+        "name": "Italy",
+        "datamapId": "ITA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 76,
+            "ivr": 30,
+            "ltowvs": 61,
+            "mas": 70,
+            "pdi": 50,
+            "uai": 75
+        }
+    },
+    {
+        "id": 258,
+        "name": "Jordan",
+        "datamapId": "JOR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 20,
+            "ivr": 43,
+            "ltowvs": 16,
+            "mas": 45,
+            "pdi": 70,
+            "uai": 65
+        }
+    },
+    {
+        "id": 264,
+        "name": "Japan",
+        "datamapId": "JPN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 46,
+            "ivr": 42,
+            "ltowvs": 88,
+            "mas": 95,
+            "pdi": 54,
+            "uai": 92
+        }
+    },
+    {
+        "id": 270,
+        "name": "Korea South",
+        "datamapId": "KOR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 18,
+            "ivr": 29,
+            "ltowvs": 100,
+            "mas": 39,
+            "pdi": 60,
+            "uai": 85
+        }
+    },
+    {
+        "id": 276,
+        "name": "Latvia",
+        "datamapId": "LAT",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 70,
+            "ivr": 13,
+            "ltowvs": 69,
+            "mas": 9,
+            "pdi": 44,
+            "uai": 63
+        }
+    },
+    {
+        "id": 282,
+        "name": "Lithuania",
+        "datamapId": "LIT",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 60,
+            "ivr": 16,
+            "ltowvs": 82,
+            "mas": 19,
+            "pdi": 42,
+            "uai": 65
+        }
+    },
+    {
+        "id": 288,
+        "name": "Luxembourg",
+        "datamapId": "LUX",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 60,
+            "ivr": 56,
+            "ltowvs": 64,
+            "mas": 50,
+            "pdi": 40,
+            "uai": 70
+        }
+    },
+    {
+        "id": 294,
+        "name": "Macedonia Rep",
+        "datamapId": "MAC",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 40,
+            "ivr": 35,
+            "ltowvs": 62,
+            "mas": 45,
+            "pdi": 90,
+            "uai": 87
+        }
+    },
+    {
+        "id": 300,
+        "name": "Malaysia",
+        "datamapId": "MAL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 26,
+            "ivr": 57,
+            "ltowvs": 41,
+            "mas": 50,
+            "pdi": 100,
+            "uai": 36
+        }
+    },
+    {
+        "id": 306,
+        "name": "Mexico",
+        "datamapId": "MEX",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 30,
+            "ivr": 97,
+            "ltowvs": 24,
+            "mas": 69,
+            "pdi": 81,
+            "uai": 82
+        }
+    },
+    {
+        "id": 312,
+        "name": "Malta",
+        "datamapId": "MLT",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 59,
+            "ivr": 66,
+            "ltowvs": 47,
+            "mas": 47,
+            "pdi": 56,
+            "uai": 96
+        }
+    },
+    {
+        "id": 318,
+        "name": "Montenegro",
+        "datamapId": "MNG",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 27,
+            "ivr": 20,
+            "ltowvs": 75,
+            "mas": 48,
+            "pdi": 88,
+            "uai": 90
+        }
+    },
+    {
+        "id": 324,
+        "name": "Moldova",
+        "datamapId": "MOL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 27,
+            "ivr": 19,
+            "ltowvs": 71,
+            "mas": 39,
+            "pdi": 90,
+            "uai": 95
+        }
+    },
+    {
+        "id": 330,
+        "name": "Morocco",
+        "datamapId": "MOR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 46,
+            "ivr": 25,
+            "ltowvs": 14,
+            "mas": 53,
+            "pdi": 70,
+            "uai": 68
+        }
+    },
+    {
+        "id": 336,
+        "name": "Netherlands",
+        "datamapId": "NET",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 80,
+            "ivr": 68,
+            "ltowvs": 67,
+            "mas": 14,
+            "pdi": 38,
+            "uai": 53
+        }
+    },
+    {
+        "id": 342,
+        "name": "Nigeria",
+        "datamapId": "NIG",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 0,
+            "ivr": 84,
+            "ltowvs": 13,
+            "mas": 60,
+            "pdi": 80,
+            "uai": 55
+        }
+    },
+    {
+        "id": 348,
+        "name": "Norway",
+        "datamapId": "NOR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 69,
+            "ivr": 55,
+            "ltowvs": 35,
+            "mas": 8,
+            "pdi": 31,
+            "uai": 50
+        }
+    },
+    {
+        "id": 354,
+        "name": "New Zealand",
+        "datamapId": "NZL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 79,
+            "ivr": 75,
+            "ltowvs": 33,
+            "mas": 58,
+            "pdi": 22,
+            "uai": 49
+        }
+    },
+    {
+        "id": 360,
+        "name": "Pakistan",
+        "datamapId": "PAK",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 14,
+            "ivr": 0,
+            "ltowvs": 50,
+            "mas": 50,
+            "pdi": 55,
+            "uai": 70
+        }
+    },
+    {
+        "id": 366,
+        "name": "Peru",
+        "datamapId": "PER",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 16,
+            "ivr": 46,
+            "ltowvs": 25,
+            "mas": 42,
+            "pdi": 64,
+            "uai": 87
+        }
+    },
+    {
+        "id": 372,
+        "name": "Philippines",
+        "datamapId": "PHI",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 32,
+            "ivr": 42,
+            "ltowvs": 27,
+            "mas": 64,
+            "pdi": 94,
+            "uai": 44
+        }
+    },
+    {
+        "id": 378,
+        "name": "Poland",
+        "datamapId": "POL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 60,
+            "ivr": 29,
+            "ltowvs": 38,
+            "mas": 64,
+            "pdi": 68,
+            "uai": 93
+        }
+    },
+    {
+        "id": 384,
+        "name": "Portugal",
+        "datamapId": "POR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 27,
+            "ivr": 33,
+            "ltowvs": 28,
+            "mas": 31,
+            "pdi": 63,
+            "uai": 99
+        }
+    },
+    {
+        "id": 390,
+        "name": "Puerto Rico",
+        "datamapId": "PUE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 43,
+            "ivr": 90,
+            "ltowvs": 0,
+            "mas": 56,
+            "pdi": 68,
+            "uai": 38
+        }
+    },
+    {
+        "id": 396,
+        "name": "Romania",
+        "datamapId": "ROM",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 30,
+            "ivr": 20,
+            "ltowvs": 52,
+            "mas": 42,
+            "pdi": 90,
+            "uai": 90
+        }
+    },
+    {
+        "id": 402,
+        "name": "Russia",
+        "datamapId": "RUS",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 39,
+            "ivr": 20,
+            "ltowvs": 81,
+            "mas": 36,
+            "pdi": 93,
+            "uai": 95
+        }
+    },
+    {
+        "id": 408,
+        "name": "South Africa",
+        "datamapId": "SAF",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 23,
+            "ivr": 63,
+            "ltowvs": 34,
+            "mas": 63,
+            "pdi": 49,
+            "uai": 49
+        }
+    },
+    {
+        "id": 414,
+        "name": "El Salvador",
+        "datamapId": "SAL",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 19,
+            "ivr": 89,
+            "ltowvs": 20,
+            "mas": 40,
+            "pdi": 66,
+            "uai": 94
+        }
+    },
+    {
+        "id": 420,
+        "name": "Saudi Arabia",
+        "datamapId": "SAU",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 48,
+            "ivr": 52,
+            "ltowvs": 36,
+            "mas": 43,
+            "pdi": 72,
+            "uai": 64
+        }
+    },
+    {
+        "id": 426,
+        "name": "Serbia",
+        "datamapId": "SER",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 25,
+            "ivr": 28,
+            "ltowvs": 52,
+            "mas": 43,
+            "pdi": 86,
+            "uai": 92
+        }
+    },
+    {
+        "id": 432,
+        "name": "Singapore",
+        "datamapId": "SIN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 20,
+            "ivr": 46,
+            "ltowvs": 72,
+            "mas": 48,
+            "pdi": 74,
+            "uai": 8
+        }
+    },
+    {
+        "id": 438,
+        "name": "Slovak Rep",
+        "datamapId": "SLK",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 52,
+            "ivr": 28,
+            "ltowvs": 77,
+            "mas": 100,
+            "pdi": 100,
+            "uai": 51
+        }
+    },
+    {
+        "id": 444,
+        "name": "Slovenia",
+        "datamapId": "SLV",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 27,
+            "ivr": 48,
+            "ltowvs": 49,
+            "mas": 19,
+            "pdi": 71,
+            "uai": 88
+        }
+    },
+    {
+        "id": 450,
+        "name": "Spain",
+        "datamapId": "SPA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 51,
+            "ivr": 44,
+            "ltowvs": 48,
+            "mas": 42,
+            "pdi": 57,
+            "uai": 86
+        }
+    },
+    {
+        "id": 456,
+        "name": "Sweden",
+        "datamapId": "SWE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 71,
+            "ivr": 78,
+            "ltowvs": 53,
+            "mas": 5,
+            "pdi": 31,
+            "uai": 29
+        }
+    },
+    {
+        "id": 462,
+        "name": "Switzerland",
+        "datamapId": "SWI",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 68,
+            "ivr": 66,
+            "ltowvs": 74,
+            "mas": 70,
+            "pdi": 34,
+            "uai": 58
+        }
+    },
+    {
+        "id": 468,
+        "name": "Taiwan",
+        "datamapId": "TAI",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 17,
+            "ivr": 49,
+            "ltowvs": 93,
+            "mas": 45,
+            "pdi": 58,
+            "uai": 69
+        }
+    },
+    {
+        "id": 474,
+        "name": "Tanzania",
+        "datamapId": "TAN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 25,
+            "ivr": 38,
+            "ltowvs": 34,
+            "mas": 40,
+            "pdi": 70,
+            "uai": 50
+        }
+    },
+    {
+        "id": 480,
+        "name": "Thailand",
+        "datamapId": "THA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 20,
+            "ivr": 45,
+            "ltowvs": 32,
+            "mas": 34,
+            "pdi": 64,
+            "uai": 64
+        }
+    },
+    {
+        "id": 486,
+        "name": "Trinidad and Tobago",
+        "datamapId": "TRI",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 16,
+            "ivr": 80,
+            "ltowvs": 13,
+            "mas": 58,
+            "pdi": 47,
+            "uai": 55
+        }
+    },
+    {
+        "id": 492,
+        "name": "Turkey",
+        "datamapId": "TUR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 37,
+            "ivr": 49,
+            "ltowvs": 46,
+            "mas": 45,
+            "pdi": 66,
+            "uai": 85
+        }
+    },
+    {
+        "id": 498,
+        "name": "Ukraine",
+        "datamapId": "UKR",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 55,
+            "ivr": 14,
+            "ltowvs": 86,
+            "mas": 27,
+            "pdi": 92,
+            "uai": 95
+        }
+    },
+    {
+        "id": 504,
+        "name": "Uruguay",
+        "datamapId": "URU",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 36,
+            "ivr": 53,
+            "ltowvs": 26,
+            "mas": 38,
+            "pdi": 61,
+            "uai": 98
+        }
+    },
+    {
+        "id": 510,
+        "name": "U.S.A.",
+        "datamapId": "USA",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 91,
+            "ivr": 68,
+            "ltowvs": 26,
+            "mas": 62,
+            "pdi": 40,
+            "uai": 46
+        }
+    },
+    {
+        "id": 516,
+        "name": "Venezuela",
+        "datamapId": "VEN",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 12,
+            "ivr": 100,
+            "ltowvs": 16,
+            "mas": 73,
+            "pdi": 81,
+            "uai": 76
+        }
+    },
+    {
+        "id": 522,
+        "name": "Vietnam",
+        "datamapId": "VIE",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 20,
+            "ivr": 35,
+            "ltowvs": 57,
+            "mas": 40,
+            "pdi": 70,
+            "uai": 30
+        }
+    },
+    {
+        "id": 528,
+        "name": "Zambia",
+        "datamapId": "ZAM",
+        "isoCode": null,
+        "isoShortCode": null,
+        "scores": {
+            "idv": 35,
+            "ivr": 42,
+            "ltowvs": 30,
+            "mas": 40,
+            "pdi": 60,
+            "uai": 50
+        }
+    }
+]
