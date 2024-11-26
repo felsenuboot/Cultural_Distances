@@ -230,10 +230,13 @@ def main():
 
             if choice == "1":
                 extract_distance(distance_df)
+                input("\n Press Enter to continue")
             elif choice == "2":
                 visualize_country_network(distance_df,selected_countries, title=f"{title}: Network Graph")
+                input("\n Finished! Press Enter to continue")
             elif choice == "3":
                 plot_kmeans_with_highlight(distance_df,selected_countries, title=f"{title}: K-Means Clustering")
+                input("\n Finished! Press Enter to continue")
             elif choice == "4":
                 break
             else:
