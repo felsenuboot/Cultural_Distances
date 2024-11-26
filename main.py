@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 from sklearn.manifold import MDS
 from sklearn.cluster import KMeans
 import numpy as np
-from tkinter import Tk, simpledialog, messagebox
-
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import FuzzyCompleter, WordCompleter
 
 # %%
 def calculate_scaled_euclidean_distances(data, score_key="scores"):
@@ -144,7 +144,26 @@ def plot_kmeans_with_highlight(distance_df, highlight_countries, n_clusters=4, t
     if(show):
         plt.show()
 
+# %%
+def dynamic_country_selection(prompt_message, countries):
+    """
+    Use fuzzy search with autocompletion for country selection.
 
+    Args:
+        prompt_message (str): Prompt message for the user.
+        countries (list): List of available countries.
+
+    Returns:
+        str: Selected country.
+    """
+    completer = FuzzyCompleter(WordCompleter(countries, ignore_case=True))
+    while True:
+        country = prompt(f"{prompt_message}: ", completer=completer).strip()
+        if country in countries:
+            return country
+        print("Invalid selection. Please try again.")
+
+# %%
 def extract_distance(distance_df):
     """
     Extract the distance of a country pair through a selection menu.
@@ -153,93 +172,65 @@ def extract_distance(distance_df):
         distance_df (pd.DataFrame): A DataFrame containing the distance matrix.
     """
     print("\n--- Country Distance Extraction Menu ---")
-    print("Available countries:")
-    for idx, country in enumerate(distance_df.index):
-        print(f"{idx + 1}: {country}")
-
-    try:
-        # Command-line selection
-        country1_idx = int(input("\nEnter the number for the first country: ")) - 1
-        country2_idx = int(input("Enter the number for the second country: ")) - 1
-        
-        country1 = distance_df.index[country1_idx]
-        country2 = distance_df.index[country2_idx]
-
-        distance = distance_df.loc[country1, country2]
-        print(f"\nDistance between {country1} and {country2}: {distance:.2f}")
-
-    except (IndexError, ValueError):
-        print("\nInvalid selection. Please try again.")
-
-def extract_distance_gui(distance_df):
-    """
-    Extract the distance of a country pair using a graphical selection menu.
-
-    Args:
-        distance_df (pd.DataFrame): A DataFrame containing the distance matrix.
-    """
-    root = Tk()
-    root.withdraw()  # Hide the root window
-
-    # Dropdown for first country
-    country1 = simpledialog.askstring("Select Country 1", "Enter the first country name (from the list):\n" + ", ".join(distance_df.index))
-    if not country1 or country1 not in distance_df.index:
-        messagebox.showerror("Error", "Invalid selection for Country 1.")
-        return
-
-    # Dropdown for second country
-    country2 = simpledialog.askstring("Select Country 2", "Enter the second country name (from the list):\n" + ", ".join(distance_df.index))
-    if not country2 or country2 not in distance_df.index:
-        messagebox.showerror("Error", "Invalid selection for Country 2.")
-        return
-
-    # Extract and display the distance
+    countries = distance_df.index.tolist()
+    
+    country1 = dynamic_country_selection("Select the first country", countries)
+    country2 = dynamic_country_selection("Select the second country", countries)
+    
     distance = distance_df.loc[country1, country2]
-    messagebox.showinfo("Distance", f"Distance between {country1} and {country2}: {distance:.2f}")
+    print(f"\nDistance between {country1} and {country2}: {distance:.2f}")
 
+# %%
 def main():
-
-    # %%
     # Load JSON data
     with open("hofstede_data.json", "r") as f:
         hofstede_data = json.load(f)
-
-    # Calculate distances
-    distance_df = calculate_scaled_euclidean_distances(hofstede_data)
-    # Selected countries
-    selected_countries = ["Germany", "Great Britain", "Indonesia", "Ireland", "Japan", "U.S.A."]
-    # Visualize the network
-    visualize_country_network(distance_df, selected_countries, title="Hofstede: Cultural Distances Visualized",)
-    # Visualize Cluster
-    plot_kmeans_with_highlight(distance_df,selected_countries,title="Hofstede: K-Means Cluster")
-
-
-    # %%
-    # Load JSON data
     with open("culture_map_data.json", "r") as f:
         culture_map_data = json.load(f)
-    # Calculate distances
-    distance_df = calculate_scaled_euclidean_distances(culture_map_data)
-    # Selected countries
-    selected_countries = ["Germany", "UK", "Indonesia", "Ireland", "Japan", "United States"]
-    # Visualize the network
-    visualize_country_network(distance_df, selected_countries, title="Culture Map: Cultural Distances Visualized")
-    # Visualize Cluster
-    plot_kmeans_with_highlight(distance_df,selected_countries,title="Culture Map: K-Means Cluster")
-    # Example: Replace with your actual distance DataFrame
-    print("Choose an option:")
-    print("1. Command-line menu")
-    print("2. Graphical menu")
-    choice = input("Enter your choice (1 or 2): ")
 
-    if choice == "1":
-        extract_distance(distance_df)
-    elif choice == "2":
-        extract_distance_gui(distance_df)
-    else:
-        print("Invalid choice. Exiting.")
+    while True:
+        print("\n--- Main Menu ---")
+        print("1. Use Hofstede Data")
+        print("2. Use Culture Map Data")
+        print("3. Exit")
+        data_choice = input("Select an option (1-3): ").strip()
 
+        if data_choice == "1":
+            data = hofstede_data
+            title = "Hofstede Data"
+            selected_countries = ["Germany", "Great Britain", "Indonesia", "Ireland", "Japan", "U.S.A."]
+        elif data_choice == "2":
+            data = culture_map_data
+            title = "Culture Map Data"
+            selected_countries = ["Germany", "UK", "Indonesia", "Ireland", "Japan", "United States"]
+        elif data_choice == "3":
+            print("Exiting.")
+            break
+        else:
+            print("Invalid choice. Try again.")
+            continue
+
+        distance_df = calculate_scaled_euclidean_distances(data)
+
+        while True:
+            print("\n--- Submenu ---")
+            print("1. Extract Distance")
+            print("2. Visualize Network")
+            print("3. Visualize K-Means Clustering")
+            print("4. Return to Main Menu")
+            choice = input("Select an option (1-4): ").strip()
+
+            if choice == "1":
+                extract_distance(distance_df)
+            elif choice == "2":
+                visualize_country_network(distance_df,selected_countries, title=f"{title}: Network Graph")
+            elif choice == "3":
+                plot_kmeans_with_highlight(distance_df,selected_countries, title=f"{title}: K-Means Clustering")
+            elif choice == "4":
+                break
+            else:
+                print("Invalid choice. Try again.")
+
+# %%
 if __name__ == "__main__":
     main()
-
-
