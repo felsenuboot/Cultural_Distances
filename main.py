@@ -1,5 +1,6 @@
 # %%
 import json
+import os
 import pandas as pd
 from scipy.spatial.distance import pdist, squareform
 import networkx as nx
@@ -9,6 +10,11 @@ from sklearn.cluster import KMeans
 import numpy as np
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import FuzzyCompleter, WordCompleter
+
+# %%
+def clear_terminal():
+    """Clear the terminal output."""
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 # %%
 def calculate_scaled_euclidean_distances(data, score_key="scores"):
@@ -189,6 +195,7 @@ def main():
         culture_map_data = json.load(f)
 
     while True:
+        clear_terminal()
         print("\n--- Main Menu ---")
         print("1. Use Hofstede Data")
         print("2. Use Culture Map Data")
@@ -213,6 +220,7 @@ def main():
         distance_df = calculate_scaled_euclidean_distances(data)
 
         while True:
+            clear_terminal()
             print("\n--- Submenu ---")
             print("1. Extract Distance")
             print("2. Visualize Network")
