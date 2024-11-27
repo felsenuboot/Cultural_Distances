@@ -46,9 +46,9 @@ def terminal_interface(data, title):
 
     while True:
         if title == "Hofstede Data":
-            pass
+            selected_countries = ["Germany", "Great Britain", "Indonesia", "Ireland", "Japan", "U.S.A."]
         elif title == "Culture Map Data":
-            pass
+            selected_countries = ["Germany", "UK", "Indonesia", "Ireland", "Japan", "United States"]
         clear_terminal()
         print(f"\n--- Submenu: {title} ---")
         print("1. Extract Distance")
@@ -68,8 +68,8 @@ def terminal_interface(data, title):
             visualize_country_network(distance_df, title=f"{title} - Network Graph")
             input("\nGraph generated. Press Enter to return to the submenu...")
         elif choice == "3":
-            plot_kmeans_with_highlight_t_SNE(distance_df, [], title=f"{title} - K-Means Clustering (t-SNE)")
-            plot_kmeans_with_highlight_MDS(distance_df, [], title=f"{title} - K-Means Clustering (MDS)")
+            plot_kmeans_with_highlight_t_SNE(distance_df, selected_countries, title=f"{title} - K-Means Clustering (t-SNE)")
+            plot_kmeans_with_highlight_MDS(distance_df, selected_countries, title=f"{title} - K-Means Clustering (MDS)")
             input("\nCluster visualization complete. Press Enter to return to the submenu...")
         elif choice == "4":
             export_distances_to_csv(distance_df, title)
