@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import ttk
-from data_processing import calculate_scaled_euclidean_distances
+from functions import calculate_scaled_euclidean_distances
 
 # GUI Launcher
 def launch_gui(distance_df):
