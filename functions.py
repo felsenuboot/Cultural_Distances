@@ -27,6 +27,7 @@ from sklearn.manifold import MDS, TSNE
 from sklearn.cluster import KMeans
 import networkx as nx
 
+
 # Core Data Processing Functions
 def calculate_scaled_euclidean_distances(data, score_key="scores"):
     countries = [item["name"] for item in data]
@@ -190,29 +191,12 @@ def plot_kmeans_with_highlight_t_SNE(distance_df, highlight_countries=[], n_clus
     if show:
         plt.show()
 
-def extract_distance(distance_df):
-    """
-    Extract the distance of a country pair through a selection menu.
-
-    Args:
-        distance_df (pd.DataFrame): A DataFrame containing the distance matrix.
-    """
-    print("\n--- Country Distance Extraction Menu ---")
-    countries = distance_df.index.tolist()
-    
-    country1 = dynamic_country_selection("Select the first country", countries)
-    country2 = dynamic_country_selection("Select the second country", countries)
-    
-    distance = distance_df.loc[country1, country2]
-    print(f"\nDistance between {country1} and {country2}: {distance:.2f}")
 
 def export_distances_to_csv(distance_df, title):
-    clear_terminal()
-    print("\n--- Export Distances to CSV ---")
     filename = f"{title.replace(' ', '_').lower()}_distances.csv"
     try:
         distance_df.to_csv("data/" + filename)
-        print(f"Distances successfully exported to {filename}")
+        return filename
     except Exception as e:
         print(f"Error exporting distances: {e}")
 
@@ -230,10 +214,10 @@ def find_max_min_distances(distance_df):
     # Find the corresponding countries for max distance
     max_location = distance_df.where(distance_df == max_distance).stack().idxmax()
     min_location = distance_df.where(distance_df == min_distance).stack().idxmin()
-
-    print(f"Maximum distance: {max_distance:.2f} between {max_location[0]} and {max_location[1]}")
-    print(f"Minimum distance: {min_distance:.2f} between {min_location[0]} and {min_location[1]}")
-
+    max = f"Maximum distance: {max_distance:.2f} between {max_location[0]} and {max_location[1]}"
+    min = f"Minimum distance: {min_distance:.2f} between {min_location[0]} and {min_location[1]}"
+    return max, min
+    
 def find_max_min_distances_for_country(title, distance_df, country):
     """
     Find the maximum and minimum distances for a specific country.
@@ -257,9 +241,10 @@ def find_max_min_distances_for_country(title, distance_df, country):
     max_country = distances.idxmax()
     min_country = distances.idxmin()
 
-    print(f"{title}: The distances for {country} are...")
-    print(f"  Maximum distance: {max_distance:.2f} with {max_country}")
-    print(f"  Minimum distance: {min_distance:.2f} with {min_country}")
+    max = f"  Maximum distance: {max_distance:.2f} with {max_country}"
+    min = f"  Minimum distance: {min_distance:.2f} with {min_country}"
+
+    return max, min
 
 def boxplot_with_highlight(distance_df, country, highlight_countries, title="", show=False):
     """
