@@ -55,15 +55,9 @@ For a complete list, refer to the `requirements.txt` file.
    ```
 
 3. **Run the Scripts**
-
-   - Preprocess data using `convert_data.py`:
-     ```bash
-     python convert_data.py
-     ```
-   - Execute the main pipeline using `main.py`:
-     ```bash
-     python main.py
-     ```
+   ```bash
+   python main.py -t -s
+   ```
 
 ## Notes
 
