@@ -1,3 +1,23 @@
+
+# Common styling for plots
+PLOT_STYLE = {
+    "node_color": "black",
+    "node_size": 3000,
+    "font_size": 8,
+    "font_color": "white",
+    "edge_color": "black",
+    "figsize": (10, 7),
+    "dpi": 300,
+    "linewidth": 1.5,
+    "boxprops": {"color": "black", "linewidth": 1.5},
+    "whiskerprops": {"color": "black", "linewidth": 1.5},
+    "capprops": {"color": "black", "linewidth": 1.5},
+    "medianprops": {"color": "black", "linewidth": 1.5},
+    "meanprops": {"color": "black", "linestyle": "--", "linewidth": 1.5},
+    "highlight_color": "red",
+    "highlight_size": 200,
+}
+
 # functions.py
 import pandas as pd
 import numpy as np
@@ -33,13 +53,13 @@ def visualize_country_network(distance_df, selected_countries=None, title="Netwo
             if country1 != country2:
                 G.add_edge(country1, country2, weight=filtered_df.loc[country1, country2])
 
-    plt.figure(figsize=(10, 7))
-    nx.draw_networkx_nodes(G, pos, node_size=3000, node_color="black")
-    nx.draw_networkx_edges(G, pos, width=1.0, alpha=0.7, edge_color="black")
-    nx.draw_networkx_labels(G, pos, font_size=8, font_color="white")
+    plt.figure(figsize=PLOT_STYLE['figsize'])
+    nx.draw_networkx_nodes(G, pos, node_size=PLOT_STYLE['node_size'], node_color=PLOT_STYLE['node_color'])
+    nx.draw_networkx_edges(G, pos, width=1.0, alpha=0.7, edge_color=PLOT_STYLE['edge_color'])
+    nx.draw_networkx_labels(G, pos, font_size=PLOT_STYLE['font_size'], font_color=PLOT_STYLE['font_color'])
     edge_labels = nx.get_edge_attributes(G, 'weight')
     edge_labels = {k: f"{v:.2f}" for k, v in edge_labels.items()}
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=PLOT_STYLE['font_size'])
     plt.axis("off")
     plt.title(title)
     plt.savefig(f"figures/{title}.png", format='png', dpi=300)
@@ -102,7 +122,7 @@ def plot_kmeans_with_highlight_MDS(distance_df, highlight_countries=[], n_cluste
     plt.ylabel('MDS Dimension 2')
     plt.legend()
     plt.tight_layout()
-    plt.savefig("figures/" + title + ".png", format='png', dpi=300)
+    plt.savefig(f'figures/{title}.png', format='png', dpi=PLOT_STYLE['dpi'])
     if(show):
         plt.show()
 
@@ -158,7 +178,7 @@ def plot_kmeans_with_highlight_t_SNE(distance_df, highlight_countries=[], n_clus
     plt.xlabel('t-SNE Dimension 1')
     plt.ylabel('t-SNE Dimension 2')
     plt.tight_layout()
-    plt.savefig("figures/" + title + ".png", format='png', dpi=300)
+    plt.savefig(f'figures/{title}.png', format='png', dpi=PLOT_STYLE['dpi'])
     if show:
         plt.show()
 

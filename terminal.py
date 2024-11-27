@@ -45,6 +45,10 @@ def terminal_interface(data, title):
     distance_df = calculate_scaled_euclidean_distances(data)
 
     while True:
+        if title == "Hofstede Data":
+            pass
+        elif title == "Culture Map Data":
+            pass
         clear_terminal()
         print(f"\n--- Submenu: {title} ---")
         print("1. Extract Distance")
