@@ -65,7 +65,7 @@ def terminal_interface(data, title):
             extract_distance(distance_df)
             input("\nPress Enter to return to the submenu...")
         elif choice == "2":
-            visualize_country_network(distance_df, title=f"{title} - Network Graph")
+            visualize_country_network(distance_df, selected_countries, title=f"{title} - Network Graph")
             input("\nGraph generated. Press Enter to return to the submenu...")
         elif choice == "3":
             plot_kmeans_with_highlight_t_SNE(distance_df, selected_countries, title=f"{title} - K-Means Clustering (t-SNE)")

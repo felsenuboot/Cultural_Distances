@@ -39,6 +39,14 @@ def calculate_scaled_euclidean_distances(data, score_key="scores"):
 
 
 def visualize_country_network(distance_df, selected_countries=None, title="Network Graph of Country Distances", show=False):
+    """
+    Visualize a network graph of country distances to scale.
+
+    Args:
+        distance_df (pd.DataFrame): A DataFrame containing the distance matrix.
+        selected_countries (list): A list of country codes to include in the graph. If None, include all countries.
+        title (str): Title of the graph.
+    """
     if selected_countries is None:
         selected_countries = distance_df.index.tolist()
 
