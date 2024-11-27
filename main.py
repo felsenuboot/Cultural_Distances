@@ -86,7 +86,7 @@ def visualize_country_network(distance_df, selected_countries=None, title="Netwo
 
     # Show the plot
     plt.title(title)
-    plt.savefig(title + ".png", format='png', dpi=300)
+    plt.savefig("figures/" + title + ".png", format='png', dpi=300)
     if(show):
         plt.show()
 
@@ -146,7 +146,7 @@ def plot_kmeans_with_highlight(distance_df, highlight_countries, n_clusters=4, t
     plt.ylabel('MDS Dimension 2')
     plt.legend()
     plt.tight_layout()
-    plt.savefig(title + ".png", format='png', dpi=300)
+    plt.savefig("figures/" + title + ".png", format='png', dpi=300)
     if(show):
         plt.show()
 
@@ -187,11 +187,65 @@ def extract_distance(distance_df):
     print(f"\nDistance between {country1} and {country2}: {distance:.2f}")
 
 # %%
+def export_distances_to_csv(distance_df, title):
+    clear_terminal()
+    print("\n--- Export Distances to CSV ---")
+    filename = f"{title.replace(' ', '_').lower()}_distances.csv"
+    try:
+        distance_df.to_csv("data/" + filename)
+        print(f"Distances successfully exported to {filename}")
+    except Exception as e:
+        print(f"Error exporting distances: {e}")
+
+def find_max_min_distances(distance_df):
+    """
+    Find and display the maximum and minimum distances between countries.
+
+    Args:
+        distance_df (pd.DataFrame): A DataFrame containing the distance matrix.
+    """
+    # Get the maximum and minimum distances (ignore diagonal elements which are zero)
+    max_distance = distance_df.where(~np.eye(distance_df.shape[0], dtype=bool)).max().max()
+    min_distance = distance_df.where(~np.eye(distance_df.shape[0], dtype=bool)).min().min()
+
+    # Find the corresponding countries for max distance
+    max_location = distance_df.where(distance_df == max_distance).stack().idxmax()
+    min_location = distance_df.where(distance_df == min_distance).stack().idxmin()
+
+    print(f"Maximum distance: {max_distance:.2f} between {max_location[0]} and {max_location[1]}")
+    print(f"Minimum distance: {min_distance:.2f} between {min_location[0]} and {min_location[1]}")
+
+def find_max_min_distances_for_country(title, distance_df, country):
+    """
+    Find the maximum and minimum distances for a specific country.
+
+    Args:
+        distance_df (pd.DataFrame): A DataFrame containing the distance matrix.
+        country (str): The country for which to find max and min distances.
+    """
+    if country not in distance_df.index:
+        print(f"Country '{country}' not found in the dataset.")
+        return
+
+    # Exclude the self-distance (diagonal)
+    distances = distance_df.loc[country].drop(country)
+
+    # Find maximum and minimum distances
+    max_distance = distances.max()
+    min_distance = distances.min()
+
+    # Get corresponding countries
+    max_country = distances.idxmax()
+    min_country = distances.idxmin()
+
+    print(f"{title}: The distances for {country} are...")
+    print(f"  Maximum distance: {max_distance:.2f} with {max_country}")
+    print(f"  Minimum distance: {min_distance:.2f} with {min_country}")
+# %%
 def main():
-    # Load JSON data
-    with open("hofstede_data.json", "r") as f:
+    with open("data/hofstede_data.json", "r") as f:
         hofstede_data = json.load(f)
-    with open("culture_map_data.json", "r") as f:
+    with open("data/culture_map_data.json", "r") as f:
         culture_map_data = json.load(f)
 
     while True:
@@ -205,15 +259,17 @@ def main():
         if data_choice == "1":
             data = hofstede_data
             title = "Hofstede Data"
-            selected_countries = ["Germany", "Great Britain", "Indonesia", "Ireland", "Japan", "U.S.A."]
         elif data_choice == "2":
             data = culture_map_data
             title = "Culture Map Data"
-            selected_countries = ["Germany", "UK", "Indonesia", "Ireland", "Japan", "United States"]
         elif data_choice == "3":
             print("Exiting.")
             break
         else:
+            clear_terminal()
+            print("Exiting")
+            clear_terminal()
+            break
             print("Invalid choice. Try again.")
             continue
 
@@ -221,27 +277,44 @@ def main():
 
         while True:
             clear_terminal()
-            print("\n--- Submenu ---")
+            print(f"\n--- Submenu: {title} ---")
             print("1. Extract Distance")
             print("2. Visualize Network")
             print("3. Visualize K-Means Clustering")
-            print("4. Return to Main Menu")
-            choice = input("Select an option (1-4): ").strip()
+            print("4. Export Distances to CSV")
+            print("5. Find Maximum and Minimum Distances")
+            print("6. Find Max/Min Distances for a Specific Country")
+            print("7. Return to Main Menu")
+            choice = input("Select an option (1-7): ").strip()
 
             if choice == "1":
                 extract_distance(distance_df)
-                input("\n Press Enter to continue")
+                input("\nPress Enter to return to the submenu...")
             elif choice == "2":
-                visualize_country_network(distance_df,selected_countries, title=f"{title}: Network Graph")
-                input("\n Finished! Press Enter to continue")
+                visualize_country_network(distance_df, title=f"{title}: Network Graph")
+                input("\nGraph generated. Press Enter to return to the submenu...")
             elif choice == "3":
-                plot_kmeans_with_highlight(distance_df,selected_countries, title=f"{title}: K-Means Clustering")
-                input("\n Finished! Press Enter to continue")
+                plot_kmeans_with_highlight(distance_df, distance_df.index.tolist(), title=f"{title}: K-Means Clustering")
+                input("\nCluster visualization complete. Press Enter to return to the submenu...")
             elif choice == "4":
+                export_distances_to_csv(distance_df, title)
+                input("\nPress Enter to return to the submenu...")
+            elif choice == "5":
+                find_max_min_distances(distance_df)
+                input("\nPress Enter to return to the submenu...")
+            elif choice == "6":
+                clear_terminal()
+                country = dynamic_country_selection(f" {title} - Select a country", distance_df.index.tolist())
+                clear_terminal()
+                find_max_min_distances_for_country(title, distance_df, country)
+                input("\nPress Enter to return to the submenu...")
+            elif choice == "7":
                 break
             else:
+                break
                 print("Invalid choice. Try again.")
 
 # %%
 if __name__ == "__main__":
     main()
+
