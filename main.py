@@ -11,12 +11,10 @@ import numpy as np
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import FuzzyCompleter, WordCompleter
 
-# %%
 def clear_terminal():
     """Clear the terminal output."""
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# %%
 def calculate_scaled_euclidean_distances(data, score_key="scores"):
     # Extract country names and scores
     countries = [item["name"] for item in data]
@@ -37,7 +35,6 @@ def calculate_scaled_euclidean_distances(data, score_key="scores"):
     
     return distance_df
 
-# %%
 def visualize_country_network(distance_df, selected_countries=[], title="Network Graph of Country Distances", show=False):
     """
     Visualize a network graph of country distances to scale.
@@ -90,7 +87,6 @@ def visualize_country_network(distance_df, selected_countries=[], title="Network
     if(show):
         plt.show()
 
-# %%
 def plot_kmeans_with_highlight_MDS(distance_df, highlight_countries=[], n_clusters=4, title="K-Means Clustering with Highlighted Countries (MDS)", show=False):
     """
     Plot a K-Means clustering result with MDS coordinates, highlighting specific countries.
@@ -150,7 +146,6 @@ def plot_kmeans_with_highlight_MDS(distance_df, highlight_countries=[], n_cluste
     if(show):
         plt.show()
 
-# %%
 def plot_kmeans_with_highlight_t_SNE(distance_df, highlight_countries=[], n_clusters=4, title="K-Means Clustering with Highlighted Countries (t-SNE)", show=False):
     """
     Plot a K-Means clustering result with t-SNE coordinates, highlighting specific countries.
@@ -206,7 +201,7 @@ def plot_kmeans_with_highlight_t_SNE(distance_df, highlight_countries=[], n_clus
     plt.savefig("figures/" + title + ".png", format='png', dpi=300)
     if show:
         plt.show()
-# %%
+
 def dynamic_country_selection(prompt_message, countries, allow_empty=False):
     """
     Use fuzzy search with autocompletion for country selection.
@@ -228,7 +223,6 @@ def dynamic_country_selection(prompt_message, countries, allow_empty=False):
             return country
         print("Invalid selection. Please try again.")
 
-# %%
 def extract_distance(distance_df):
     """
     Extract the distance of a country pair through a selection menu.
@@ -245,7 +239,6 @@ def extract_distance(distance_df):
     distance = distance_df.loc[country1, country2]
     print(f"\nDistance between {country1} and {country2}: {distance:.2f}")
 
-# %%
 def export_distances_to_csv(distance_df, title):
     clear_terminal()
     print("\n--- Export Distances to CSV ---")
@@ -363,11 +356,10 @@ def boxplot_with_highlight(distance_df, country, highlight_countries, title="", 
 
     # Save and show the plot
     plt.tight_layout()
-    plt.savefig(f"figures/{title} {country}_distance_boxplot_styled.png", format="png", dpi=300)
+    plt.savefig(f"figures/{title} - {country}_distance_boxplot_styled.png", format="png", dpi=300)
     if show:
         plt.show()
 
-# %%
 def main():
     with open("data/hofstede_data.json", "r") as f:
         hofstede_data = json.load(f)
@@ -418,11 +410,11 @@ def main():
                 extract_distance(distance_df)
                 input("\nPress Enter to return to the submenu...")
             elif choice == "2":
-                visualize_country_network(distance_df, title=f"{title}: Network Graph")
+                visualize_country_network(distance_df, title=f"{title} - Network Graph")
                 input("\nGraph generated. Press Enter to return to the submenu...")
             elif choice == "3":
-                plot_kmeans_with_highlight_t_SNE(distance_df, selected_countries, title=f"{title}: K-Means Clustering (t-SNE)")
-                plot_kmeans_with_highlight_MDS(distance_df, selected_countries, title=f"{title}: K-Means Clustering (MDS)")
+                plot_kmeans_with_highlight_t_SNE(distance_df, selected_countries, title=f"{title} - K-Means Clustering (t-SNE)")
+                plot_kmeans_with_highlight_MDS(distance_df, selected_countries, title=f"{title} - K-Means Clustering (MDS)")
                 input("\nCluster visualization complete. Press Enter to return to the submenu...")
             elif choice == "4":
                 export_distances_to_csv(distance_df, title)
@@ -458,7 +450,7 @@ def main():
             else:
                 break
                 print("Invalid choice. Try again.")
-# %%
+
 if __name__ == "__main__":
     main()
 
