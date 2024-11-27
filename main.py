@@ -2,16 +2,20 @@
 import argparse
 import json
 from terminal import terminal_interface, clear_terminal
+from gui import CulturalDimensionsApp
 from rich import print
 from rich.console import Console
 from rich.columns import Columns
 from rich.panel import Panel
 from rich.align import Align
+import tkinter as tk
+
 
 def main():
     console = Console()
     parser = argparse.ArgumentParser(description="Cultural Dimensions Application")
     parser.add_argument("-t", "--terminal", action="store_true", help="Launch terminal interface")
+    parser.add_argument("-g", "--gui", action="store_true", help="Launch graphical interface")
     parser.add_argument("-s", "--show", action="store_true", help="Enable showing plots during execution")
     args = parser.parse_args()
     show = args.show
@@ -23,7 +27,11 @@ def main():
     with open("data/culture_map_data.json", "r") as f:
         culture_map_data = json.load(f)
 
-    if args.terminal:
+    if args.gui:
+        root = tk.Tk()
+        app = CulturalDimensionsApp(root)
+        root.mainloop()
+    elif args.terminal:
         while True:
             clear_terminal()
             
@@ -60,5 +68,8 @@ def main():
             # Pass data to the terminal interface
             terminal_interface(data, title, show)
             clear_terminal()
+    else:
+        console.print("[bold red]No interface selected. Use -t for terminal or -g for GUI.[/bold red]")
+
 if __name__ == "__main__":
     main()
