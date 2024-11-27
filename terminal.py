@@ -103,4 +103,4 @@ def terminal_interface(data, title):
         elif choice == "8":
             break
         else:
-            print("Invalid choice. Try again.")
+            break

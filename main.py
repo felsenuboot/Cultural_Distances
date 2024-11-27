@@ -33,7 +33,6 @@ def main():
                 break
             else:
                 break
-                continue
 
             terminal_interface(data, title)
 
