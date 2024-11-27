@@ -258,9 +258,11 @@ def main():
 
         if data_choice == "1":
             data = hofstede_data
+            selected_countries = ["Germany", "Great Britain", "Indonesia", "Ireland", "Japan", "U.S.A."]
             title = "Hofstede Data"
         elif data_choice == "2":
             data = culture_map_data
+            selected_countries = ["Germany", "UK", "Indonesia", "Ireland", "Japan", "United States"]
             title = "Culture Map Data"
         elif data_choice == "3":
             print("Exiting.")
@@ -294,7 +296,7 @@ def main():
                 visualize_country_network(distance_df, title=f"{title}: Network Graph")
                 input("\nGraph generated. Press Enter to return to the submenu...")
             elif choice == "3":
-                plot_kmeans_with_highlight(distance_df, distance_df.index.tolist(), title=f"{title}: K-Means Clustering")
+                plot_kmeans_with_highlight(distance_df, selected_countries, title=f"{title}: K-Means Clustering")
                 input("\nCluster visualization complete. Press Enter to return to the submenu...")
             elif choice == "4":
                 export_distances_to_csv(distance_df, title)
