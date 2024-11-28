@@ -10,7 +10,8 @@ from functions import (
     export_distances_to_csv, 
     find_max_min_distances, 
     find_max_min_distances_for_country, 
-    boxplot_with_highlight
+    plot_country_distance_boxplot_with_highlight,
+    plot_all_distance_boxplot_with_highlight
 )
 
 from rich import print
@@ -66,6 +67,38 @@ def extract_distance(distance_df):
     console.print(
         Panel(f"[bold green]:sparkle: Distance between {country1} and {country2}: {distance:.2f} :sparkle: [/bold green][red]\n\n Press Enter to return to the submenu...", border_style="green", padding=1)
     )
+def select_country_pairs(distance_df):
+    """
+    Allow the user to interactively select multiple country pairs.
+    
+    Args:
+        distance_df (pd.DataFrame): Distance matrix with country indices.
+    
+    Returns:
+        list: List of selected country pairs.
+    """
+    highlighted_pairs = []
+    countries = distance_df.index.tolist()
+
+    print("\nSelect country pairs to highlight (press Enter with no input to finish):")
+    while True:
+        # Select the first country
+        country1 = dynamic_country_selection("Select the first country", countries, allow_empty=True)
+        if not country1:
+            break  # Exit if no input
+
+        # Select the second country
+        country2 = dynamic_country_selection(f"First country: {country1}\nSelect the second country", countries, allow_empty=True)
+        if not country2:
+            print("Second country not selected. Restarting pair selection.")
+            continue
+
+        # Append the pair
+        pair = (country1, country2)
+        highlighted_pairs.append(pair)
+        print(f"Added pair: {pair[0]} - {pair[1]}")
+
+    return highlighted_pairs
 
 def terminal_interface(data, title, show):
     console = Console()
@@ -87,8 +120,9 @@ def terminal_interface(data, title, show):
             "4. Export Distances to CSV",
             "5. Find Maximum and Minimum Distances",
             "6. Find Max/Min Distances for a Specific Country",
-            "7. Box Plot with Highlighted Distances",
-            "8. Return to Main Menu"
+            "7. One Country's Distances: Box Plot with Highlighted Distances",
+            "8. All Distances: Box Plot with Highlighted Distances",
+            "9. Return to Main Menu"
             ]
         user_renderables = [Panel(entry) for entry in entries]
 
@@ -179,13 +213,35 @@ def terminal_interface(data, title, show):
                     break
                 highlight_countries.append(highlight)
                 print(f"Added {highlight} to highlights.")
-            boxplot_with_highlight(distance_df, country, highlight_countries, title=title,show=show)
+            plot_country_distance_boxplot_with_highlight(distance_df, country, highlight_countries, title=title,show=show)
             clear_terminal()
             console.print(
                 Panel(f"[bold green]:sparkle: Box plot generated. :sparkle: [/bold green][red]\n\n Press Enter to return to the submenu...", border_style="green", padding=1)
             )
             input()
         elif choice == "8":
+            clear_terminal()
+            print("\nInteractive Box Plot with Highlighted Pairs")
+            
+            # Allow interactive selection of pairs
+            highlighted_pairs = select_country_pairs(distance_df)
+            
+            if not highlighted_pairs:
+                print("No pairs selected. Generating boxplot without highlights...")
+            
+            # Plot the boxplot with or without highlighted pairs
+            plot_all_distance_boxplot_with_highlight(
+                distance_df, 
+                highlighted_pairs=highlighted_pairs, 
+                title=f"{title} - Boxplot with Highlights", 
+                show=show
+            )
+            
+            console.print(
+                Panel(f"[bold green]:sparkle: Box plot generated. :sparkle: [/bold green][red]\n\nPress Enter to return to the submenu...", border_style="green", padding=1)
+            )
+            input()
+        elif choice == "9":
             break
         else:
             break

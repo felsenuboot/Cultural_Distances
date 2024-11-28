@@ -38,7 +38,6 @@ def calculate_scaled_euclidean_distances(data, score_key="scores"):
     distance_matrix = squareform(distances)
     return pd.DataFrame(distance_matrix, index=countries, columns=countries)
 
-
 def visualize_country_network(distance_df, selected_countries=None, title="Network Graph of Country Distances", show=False):
     """
     Visualize a network graph of country distances to scale.
@@ -74,7 +73,6 @@ def visualize_country_network(distance_df, selected_countries=None, title="Netwo
     plt.savefig(f"figures/{title}.png", format='png', dpi=300)
     if show:
         plt.show()
-
 
 def plot_kmeans_with_highlight_MDS(distance_df, highlight_countries=[], n_clusters=4, title="K-Means Clustering with Highlighted Countries (MDS)", show=False):
     """
@@ -246,7 +244,7 @@ def find_max_min_distances_for_country(title, distance_df, country):
 
     return max, min
 
-def boxplot_with_highlight(distance_df, country, highlight_countries, title="", show=False):
+def plot_country_distance_boxplot_with_highlight(distance_df, country, highlight_countries, title="", show=False):
     """
     Create a styled box plot of all distances for a specific country, highlighting specific distances.
 
@@ -311,3 +309,102 @@ def boxplot_with_highlight(distance_df, country, highlight_countries, title="", 
     plt.savefig(f"figures/{title} - {country}_distance_boxplot_styled.png", format="png", dpi=300)
     if show:
         plt.show()
+
+def plot_all_distance_boxplot_with_highlight(distance_df, highlighted_pairs=None, title="Country Distances Boxplot", show=True):
+    """
+    Create a styled boxplot of all distances between countries and highlight specific pairs.
+
+    Args:
+        distance_df (pd.DataFrame): A DataFrame containing the distance matrix.
+        highlighted_pairs (list of tuples): List of country pairs to highlight (e.g., [("Country1", "Country2")]).
+        title (str): Title for the boxplot.
+        show (bool): Whether to display the plot.
+    """
+    if highlighted_pairs is None:
+        highlighted_pairs = []
+
+    print(f"Highlighted pairs: {highlighted_pairs}")
+
+    # Flatten the distance matrix for the boxplot
+    distances = []
+    pair_to_distance = {}
+
+    for i, country1 in enumerate(distance_df.index):
+        for j, country2 in enumerate(distance_df.columns):
+            if i < j:  # Avoid duplicate pairs and self-distances
+                distance = distance_df.loc[country1, country2]
+                distances.append(distance)
+                pair_to_distance[(country1, country2)] = distance
+                pair_to_distance[(country2, country1)] = distance  # Add reverse order
+
+    print(f"Total distances: {len(distances)}")
+    print(f"Pairs in distance map: {len(pair_to_distance)}")
+
+    # Extract highlighted distances
+    highlighted_values = [
+        pair_to_distance[pair] for pair in highlighted_pairs if pair in pair_to_distance
+    ]
+    print(f"Highlighted values: {highlighted_values}")
+
+    # Create the box plot
+    fig, ax = plt.subplots(figsize=(8, 6))
+    box = ax.boxplot(
+        distances,
+        vert=True,
+        patch_artist=False,  # No filling
+        boxprops=dict(color='black', linewidth=1.5),
+        whiskerprops=dict(color='black', linewidth=1.5),
+        capprops=dict(color='black', linewidth=1.5),
+        medianprops=dict(color='black', linewidth=1.5),
+        meanline=True,  # Show the average line
+        meanprops=dict(color='black', linestyle='--', linewidth=1.5),
+    )
+
+    # Highlight specific points with a fine 'X'
+    if highlighted_values:
+        x_coords = [1] * len(highlighted_values)  # All points belong to the same box
+        y_coords = highlighted_values
+        ax.scatter(
+            x_coords,
+            y_coords,
+            color='black',
+            marker='x',
+            s=50,
+            zorder=3,
+            label="Highlighted Distances"
+        )
+
+    # Annotate the highlighted points
+    for pair, value in zip(highlighted_pairs, highlighted_values):
+        ax.annotate(
+            f"{pair[0]}-{pair[1]}",
+            (1.1, value),  # Position text outside the boxplot
+            fontsize=9,  # Smaller, fine text
+            fontweight='regular',
+            color='black',
+            verticalalignment='center',
+            horizontalalignment='left',
+        )
+
+    # Customize plot
+    ax.set_title(title, fontsize=14, color='black')
+    ax.set_ylabel("Distance", fontsize=12, color='black')
+    ax.set_xticks([1])
+    ax.set_xticklabels(["All Country Pairs"], fontsize=12, color='black')
+    ax.tick_params(axis='y', colors='black')
+    ax.spines['bottom'].set_color('black')
+    ax.spines['left'].set_color('black')
+    ax.spines['right'].set_color('none')  # Remove right spine
+    ax.spines['top'].set_color('none')  # Remove top spine
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+
+    # Save and show the plot
+    plt.tight_layout()
+    plot_filename = f"{title.replace(' ', '_').lower()}_styled.png"
+    print(f"Saving the styled plot as {plot_filename}...")
+    plt.savefig(f"figures/{plot_filename}", format="png", dpi=300)
+    if show:
+        plt.show()
+    print("Styled plot displayed or saved.")
+
+
