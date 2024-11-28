@@ -20,7 +20,9 @@ from rich.columns import Columns
 from rich.panel import Panel
 from rich.progress import Progress
 from rich.align import Align
+from rich.prompt import Prompt
 from time import sleep
+
 console = Console()
 
 
@@ -114,25 +116,24 @@ def terminal_interface(data, title, show):
 
         # Prepare menu entries
         entries= [
-            "1. Extract Distance",
-            "2. Visualize Network",
-            "3. Visualize K-Means Clustering",
-            "4. Export Distances to CSV",
-            "5. Find Maximum and Minimum Distances",
-            "6. Find Max/Min Distances for a Specific Country",
-            "7. One Country's Distances: Box Plot with Highlighted Distances",
-            "8. All Distances: Box Plot with Highlighted Distances",
-            "9. Return to Main Menu"
+            "1. [blue]Extract Distance",
+            "2. [blue]Visualize Network",
+            "3. [blue]Visualize K-Means Clustering",
+            "4. [blue]Export Distances to CSV",
+            "5. [blue]Find Maximum and Minimum Distances",
+            "6. [blue]Find Max/Min Distances for a Specific Country",
+            "7. [blue]One Country's Distances: Box Plot with Highlighted Distances",
+            "8. [blue]All Distances: Box Plot with Highlighted Distances",
+            "9. [blue]Return to Main Menu"
             ]
         user_renderables = [Panel(entry) for entry in entries]
 
         # Render the main menu
         menu_columns = Columns(user_renderables, equal=True, expand=True)
-        menu_panel = Panel(Align.center(menu_columns), title=f"Submenu: {title}", padding=(1, 2))
+        menu_panel = Panel(Align.center(menu_columns), title=f"[bold blue]Submenu: {title}", padding=(1, 2))
 
         console.print(menu_panel)
-
-        choice = input("Select an option (1-8): ").strip()
+        choice = Prompt.ask("？ Select an option [green](1-8)").strip()
 
         if choice == "1":
             clear_terminal()
