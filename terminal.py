@@ -186,8 +186,8 @@ def terminal_interface(data, title, show):
             input()
         elif choice == "5":
             clear_terminal()
-            max, min = find_max_min_distances(distance_df)
-            panel = Panel(Align.center(f"[bold green]:sparkle: {max} :sparkle:\n:sparkle: {min} :sparkle:[/bold green][red]\n\n Press Enter to return to the submenu..."), title=f"Distances for: {title}", padding=(1, 2))
+            max, min, avg = find_max_min_distances(distance_df)
+            panel = Panel(Align.center(f"[bold green]:sparkle: {max} :sparkle:\n:sparkle: {min} :sparkle:\n:sparkle: {avg} :sparkle:[/bold green][red]\n\n Press Enter to return to the submenu..."), title=f"Distances for: {title}", padding=(1, 2))
             console.print(panel)
             input()
         elif choice == "6":
