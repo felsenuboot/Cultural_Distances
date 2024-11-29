@@ -189,7 +189,6 @@ def plot_kmeans_with_highlight_t_SNE(distance_df, highlight_countries=[], n_clus
     if show:
         plt.show()
 
-
 def export_distances_to_csv(distance_df, title):
     filename = f"{title.replace(' ', '_').lower()}_distances.csv"
     try:
@@ -208,13 +207,15 @@ def find_max_min_distances(distance_df):
     # Get the maximum and minimum distances (ignore diagonal elements which are zero)
     max_distance = distance_df.where(~np.eye(distance_df.shape[0], dtype=bool)).max().max()
     min_distance = distance_df.where(~np.eye(distance_df.shape[0], dtype=bool)).min().min()
-
+    average_distance = distance_df.where(~np.eye(distance_df.shape[0], dtype=bool)).mean().mean()
     # Find the corresponding countries for max distance
     max_location = distance_df.where(distance_df == max_distance).stack().idxmax()
     min_location = distance_df.where(distance_df == min_distance).stack().idxmin()
     max = f"Maximum distance: {max_distance:.2f} between {max_location[0]} and {max_location[1]}"
     min = f"Minimum distance: {min_distance:.2f} between {min_location[0]} and {min_location[1]}"
-    return max, min
+    avg = f"Average distance: {average_distance  :.2f}"
+
+    return max, min, avg
     
 def find_max_min_distances_for_country(title, distance_df, country):
     """
@@ -406,5 +407,3 @@ def plot_all_distance_boxplot_with_highlight(distance_df, highlighted_pairs=None
     if show:
         plt.show()
     print("Styled plot displayed or saved.")
-
-
