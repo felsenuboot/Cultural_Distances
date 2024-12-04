@@ -407,3 +407,31 @@ def plot_all_distance_boxplot_with_highlight(distance_df, highlighted_pairs=None
     if show:
         plt.show()
     print("Styled plot displayed or saved.")
+
+def display_cultural_dimensions(data, selected_countries):
+    """
+    Display the cultural dimensions for all selected countries.
+
+    Args:
+        data (list of dict): List of dictionaries containing country data and their cultural dimensions.
+        selected_countries (list of str): List of countries to display.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing cultural dimensions for the selected countries.
+    """
+    # Filter the data for the selected countries
+    filtered_data = [
+        {**{"Country": item["name"]}, **item["scores"]}
+        for item in data if item["name"] in selected_countries
+    ]
+    
+    if not filtered_data:
+        print("No matching countries found in the data.")
+        return None
+
+    # Convert to a DataFrame for better readability
+    dimensions_df = pd.DataFrame(filtered_data)
+    dimensions_df.set_index("Country", inplace=True)
+
+    return dimensions_df
+

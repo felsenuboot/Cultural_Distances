@@ -11,7 +11,8 @@ from functions import (
     find_max_min_distances, 
     find_max_min_distances_for_country, 
     plot_country_distance_boxplot_with_highlight,
-    plot_all_distance_boxplot_with_highlight
+    plot_all_distance_boxplot_with_highlight,
+    display_cultural_dimensions
 )
 
 from rich import print
@@ -21,7 +22,9 @@ from rich.panel import Panel
 from rich.progress import Progress
 from rich.align import Align
 from rich.prompt import Prompt
+from rich.table import Table
 from time import sleep
+import pyperclip
 
 console = Console()
 
@@ -54,6 +57,64 @@ def dynamic_country_selection(prompt_message, countries, allow_empty=False):
         
         # Display error message using rich
         console.print(Panel("[bold red]Invalid selection. Please try again.[/bold red]", border_style="red"))
+
+def display_selected_cultural_dimensions(data, countries):
+    """
+    Display cultural dimensions for dynamically selected countries using a Rich table
+    and copy the table to the clipboard for pasting into Word.
+
+    Args:
+        data (list of dict): List of dictionaries containing country data and their cultural dimensions.
+        countries (list of str): List of all available countries.
+    """
+    selected_countries = []
+    while True:
+        # Use the existing dynamic_country_selection function to get a country
+        country = dynamic_country_selection(
+            "Select a country (press Enter with no input to finish):", countries, allow_empty=True
+        )
+        if not country:  # Exit if no country is selected
+            break
+        if country not in selected_countries:
+            selected_countries.append(country)
+
+    if not selected_countries:
+        console.print("[bold red]No countries selected. Returning to submenu...[/bold red]")
+        return
+
+    # Call the display_cultural_dimensions function to process and display the selected countries
+    dimensions_df = display_cultural_dimensions(data, selected_countries)
+
+    if dimensions_df is not None:
+        # Create a Rich Table to display the DataFrame
+        table = Table(title="Cultural Dimensions of Selected Countries", title_style="bold magenta")
+
+        # Add columns
+        table.add_column("Country", style="bold cyan", justify="left")
+        for column in dimensions_df.columns:
+            table.add_column(column, style="bold white", justify="center")
+
+        # Add rows from the DataFrame
+        rows = []
+        for country, row in dimensions_df.iterrows():
+            row_data = [str(value) for value in row]
+            rows.append([country] + row_data)
+            table.add_row(country, *row_data)
+
+        # Center and print the table using Rich
+        aligned_table = Align.center(table)
+        console.print(aligned_table)
+
+        input("Press enter to copy the table to the clipboard and continue...")
+        # Prepare tab-separated table for Word
+        clipboard_content = dimensions_df.to_csv(sep="\t", index=True)
+
+        # Copy to clipboard
+        try:
+            pyperclip.copy(clipboard_content)
+            console.print("[bold green]Table copied to clipboard! Paste it directly into Word as a table.[/bold green]")
+        except pyperclip.PyperclipException as e:
+            console.print(f"[bold red]Failed to copy to clipboard: {e}[/bold red]")
 
 def extract_distance(distance_df):
     """Extract the distance of a country pair through a selection menu."""
@@ -124,7 +185,8 @@ def terminal_interface(data, title, show):
             "6. [blue]Find Max/Min Distances for a Specific Country",
             "7. [blue]One Country's Distances: Box Plot with Highlighted Distances",
             "8. [blue]All Distances: Box Plot with Highlighted Distances",
-            "9. [blue]Return to Main Menu"
+            "9. [blue]Display cultural dimensions",
+            "10. [red]Return to Main Menu"
             ]
         user_renderables = [Panel(entry) for entry in entries]
 
@@ -133,7 +195,7 @@ def terminal_interface(data, title, show):
         menu_panel = Panel(Align.center(menu_columns), title=f"[bold blue]Submenu: {title}", padding=(1, 2))
 
         console.print(menu_panel)
-        choice = Prompt.ask("？ Select an option [green](1-8)").strip()
+        choice = Prompt.ask("？ Select an option [green](1-10)").strip()
 
         if choice == "1":
             clear_terminal()
@@ -243,6 +305,9 @@ def terminal_interface(data, title, show):
             )
             input()
         elif choice == "9":
+            countries = distance_df.index.tolist()
+            display_selected_cultural_dimensions(data, countries)
+        elif choice == "10":
             break
         else:
             break
