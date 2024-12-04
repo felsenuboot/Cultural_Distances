@@ -1,8 +1,14 @@
-# Cultural Distances: Project Overview
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#cultural-distances-project-overview)
+
+# ➤ Cultural Distances: Project Overview
 
 This repository contains Python scripts and associated files for processing, analyzing, and visualizing cultural data. The project uses various Python libraries for data manipulation and machine learning.
 
-## Files in This Repository
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#files-in-this-repository)
+
+## ➤ Files in This Repository
 
 ### 1. `convert_data.py`
 
@@ -27,7 +33,10 @@ This file lists all the Python dependencies required to run the project. Use it 
 pip install -r requirements.txt
 ```
 
-## Dependencies
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#dependencies)
+
+## ➤ Dependencies
 
 The project relies on the following Python packages:
 
@@ -38,7 +47,10 @@ The project relies on the following Python packages:
 
 For a complete list, refer to the `requirements.txt` file.
 
-## How to Use
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#how-to-use)
+
+## ➤ How to Use
 
 1. **Clone the Repository**
 
@@ -59,12 +71,18 @@ For a complete list, refer to the `requirements.txt` file.
    python main.py -t -s
    ```
 
-## Notes
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#notes)
+
+## ➤ Notes
 
 - Ensure your input data meets the expected format required by `convert_data.py`. Check the script for details on input and output specifications.
 - If any issues arise, ensure all dependencies are installed and compatible with your Python version.
 
-## Contributing
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#contributing)
+
+## ➤ Contributing
 
 Feel free to contribute by submitting pull requests. Make sure to:
 
