@@ -186,7 +186,8 @@ def terminal_interface(data, title, show):
             "7. [blue]One Country's Distances: Box Plot with Highlighted Distances",
             "8. [blue]All Distances: Box Plot with Highlighted Distances",
             "9. [blue]Display cultural dimensions",
-            "10. [red]Return to Main Menu"
+            f"10. [blue]Show Cultural Dimensions of {title}",
+            "11. [red] Exit"
             ]
         user_renderables = [Panel(entry) for entry in entries]
 

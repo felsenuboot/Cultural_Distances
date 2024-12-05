@@ -1,7 +1,7 @@
 # main.py
 import argparse
 import json
-from terminal import terminal_interface, clear_terminal
+from terminal import terminal_interface, clear_terminal, select_country_pairs
 from prompt_toolkit.completion import FuzzyCompleter, WordCompleter
 from prompt_toolkit import prompt
 
@@ -13,6 +13,11 @@ from rich.align import Align
 from rich.prompt import Prompt
 from rich.layout import Layout
 from time import sleep
+
+from functions import (
+    calculate_scaled_euclidean_distances, 
+    plot_two_distance_boxplots_with_highlight
+    )
 
 def display_fullscreen_exit_message(console, message):
     """Displays a fullscreen exit message centered both horizontally and vertically."""
@@ -60,6 +65,7 @@ def main():
             entries = [
                 "Use Hofstede Data",
                 "Use Culture Map Data",
+                "Box Plot all distances",
                 "Exit"
             ]
             completer = FuzzyCompleter(WordCompleter(entries, ignore_case=True))
@@ -85,12 +91,52 @@ def main():
                     data = culture_map_data
                     title = "Culture Map Data"
                 elif data_choice == "3" or data_choice == entries[2]:
+                    hs_distance_df = calculate_scaled_euclidean_distances(hofstede_data)
+                    cm_distance_df = calculate_scaled_euclidean_distances(culture_map_data)
+                    clear_terminal()
+                    print("\nBox Plot of both frameworks with Highlighted Pairs")
+                    
+                    # Select country pairs for Hofstede framework
+                    print("\n[bold blue]Select country pairs for the Hofstede framework:[/bold blue]")
+                    highlighted_pairs_hofstede = select_country_pairs(hs_distance_df)
+
+                    # Select country pairs for Culture Map framework
+                    print("\n[bold blue]Select country pairs for the Culture Map framework:[/bold blue]")
+                    highlighted_pairs_culture_map = select_country_pairs(cm_distance_df)
+                    
+                    # Combine pairs into a single dictionary for display
+                    highlight_pairs = highlighted_pairs_hofstede + highlighted_pairs_culture_map
+
+                    # Inform the user about selected pairs
+                    console.print(
+                        Panel(f"Selected pairs:\n\n[bold green]Hofstede:[/bold green] {highlighted_pairs_hofstede}\n[bold green]Culture Map:[/bold green] {highlighted_pairs_culture_map}",
+                            title="[bold blue]Country Pairs for Highlighting[/bold blue]", border_style="blue", padding=1)
+                    )
+                    
+                    # Check if any pairs are highlighted
+                    if not highlighted_pairs_hofstede and not highlighted_pairs_culture_map:
+                        print("No pairs selected. Generating boxplot without highlights...")
+                    
+                    # Plot the boxplot with or without highlighted pairs
+                    plot_two_distance_boxplots_with_highlight(
+                        hs_distance_df,
+                        cm_distance_df, 
+                        highlight_pairs=highlight_pairs, 
+                        title=f"Both frameworks - Boxplot with Highlights", 
+                        show=show
+                    )
+                    
+                    console.print(
+                        Panel(f"[bold green]:sparkle: Box plot generated. :sparkle: [/bold green][red]\n\nPress Enter to return to the submenu...", border_style="green", padding=1)
+                    )
+                    input()
+                    break
+                elif data_choice == "4" or data_choice == entries[2]:
                     display_fullscreen_exit_message(console, ":sparkle: Thank you for using the application! :sparkle: \nSee you next time.")
                     break
                 else:
                     display_fullscreen_exit_message(console, ":sparkle: Thank you for using the application! :sparkle: \nSee you next time.")
                     break
-
                 # Pass data to the terminal interface
                 terminal_interface(data, title, show)
                 clear_terminal()

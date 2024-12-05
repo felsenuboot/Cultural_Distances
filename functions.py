@@ -439,3 +439,68 @@ def display_cultural_dimensions(data, selected_countries):
 
     return dimensions_df
 
+def plot_two_distance_boxplots_with_highlight(
+    distance_df1, distance_df2, highlight_pairs=[], 
+    labels=("Hofstede", "Culture Map"), title="Side-by-Side Boxplots", show=False
+):
+    """
+    Create side-by-side boxplots for two datasets, highlighting and labeling specific country pairs.
+
+    Args:
+        distance_df1 (pd.DataFrame): Distance matrix for the first dataset.
+        distance_df2 (pd.DataFrame): Distance matrix for the second dataset.
+        highlight_pairs (list of tuples): List of country pairs to highlight (e.g., [("Germany", "Japan")]).
+        labels (tuple): Labels for the datasets.
+        title (str): Title for the plot.
+        show (bool): Whether to display the plot.
+    """
+    # Extract distances from the distance matrices, excluding self-distances
+    distances1 = distance_df1.where(~pd.DataFrame(np.eye(distance_df1.shape[0], dtype=bool), index=distance_df1.index, columns=distance_df1.columns)).stack()
+    distances2 = distance_df2.where(~pd.DataFrame(np.eye(distance_df2.shape[0], dtype=bool), index=distance_df2.index, columns=distance_df2.columns)).stack()
+    
+    # Highlighted values for dataset 1 and dataset 2
+    highlighted_values1 = {
+        pair: distance_df1.loc[pair[0], pair[1]] for pair in highlight_pairs if pair[0] in distance_df1.index and pair[1] in distance_df1.columns
+    }
+    highlighted_values2 = {
+        pair: distance_df2.loc[pair[0], pair[1]] for pair in highlight_pairs if pair[0] in distance_df2.index and pair[1] in distance_df2.columns
+    }
+    
+    # Prepare the boxplot data
+    data = [distances1.values, distances2.values]
+    
+    # Create the plot
+    fig, ax = plt.subplots(figsize=(10, 6))
+    box = ax.boxplot(data, patch_artist=False, showmeans=False, 
+                     boxprops=dict(color='black', linewidth=1.5),
+                     whiskerprops=dict(color='black', linewidth=1.5),
+                     capprops=dict(color='black', linewidth=1.5),
+                     medianprops=dict(color='black', linewidth=1.5),
+                     meanprops=dict(color='black', linestyle='--', linewidth=1.5))
+    
+    # Highlight and annotate specific points for dataset 1 and dataset 2
+    for i, (highlighted_values, x_coord) in enumerate([(highlighted_values1, 1), (highlighted_values2, 2)]):
+        for pair, distance in highlighted_values.items():
+            # Highlight the point
+            ax.scatter(x_coord, distance, color='black', marker='x', s=50, zorder=3)
+            # Annotate the point
+            ax.annotate(
+                f"{pair[0]}-{pair[1]}: {distance:.2f}",
+                (x_coord + 0.1, distance),  # Slight offset for readability
+                fontsize=9, color='black', verticalalignment='center'
+            )
+    
+    # Customize the plot
+    ax.set_title(title, fontsize=14, color='black')
+    ax.set_ylabel("Distance", fontsize=12, color='black')
+    ax.set_xticks([1, 2])
+    ax.set_xticklabels(labels, fontsize=12, color='black')
+    ax.tick_params(colors='black')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    
+    # Save and optionally show the plot
+    plt.tight_layout()
+    plt.savefig(f"{title.replace(' ', '_').lower()}.png", dpi=300)
+    if show:
+        plt.show()
