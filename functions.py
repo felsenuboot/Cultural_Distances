@@ -33,10 +33,14 @@ def calculate_scaled_euclidean_distances(data, score_key="scores"):
     countries = [item["name"] for item in data]
     scores = [item[score_key] for item in data]
     scores_df = pd.DataFrame(scores, index=countries).replace(-1, pd.NA).dropna(axis=1, how="any")
+    num_dimensions = scores_df.shape[1]  # Get the number of dimensions
+    input(num_dimensions)
     variances = scores_df.var().values
     distances = pdist(scores_df, metric="seuclidean", V=variances)
     distance_matrix = squareform(distances)
-    return pd.DataFrame(distance_matrix, index=countries, columns=countries)
+    squared_distance_matrix = distance_matrix ** 2
+    normalized_distance_matrix = squared_distance_matrix / num_dimensions  # Normalize by dimensions
+    return pd.DataFrame(normalized_distance_matrix, index=countries, columns=countries)
 
 def visualize_country_network(distance_df, selected_countries=None, title="Network Graph of Country Distances", show=False):
     """
