@@ -7,10 +7,10 @@ This repository contains Python scripts and associated files for processing, ana
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#how-to-use)
 
-## ➤ How to Use
+## ➤ How to Install
 
 > [!NOTE]  
-> Make sure python is installed. 
+>    Make sure you have Python installed (version >= 3.8): https://www.python.org/
 
 1. **Clone the Repository**
 
@@ -19,8 +19,20 @@ This repository contains Python scripts and associated files for processing, ana
    cd Cultural_Distances
    ```
 
+2. _(Optional)_ **Create a virtual environment**
+   Mac:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+   Windows
+   ```cmd
+   python3 -m venv .venv
+   C:\> .venv\Scripts\activate.bat
+   ```
+   
 2. **Install Dependencies**
-   Make sure you have Python installed (version >= 3.8). Then, run:
 
    ```bash
    pip install -r requirements.txt
@@ -30,6 +42,16 @@ This repository contains Python scripts and associated files for processing, ana
    ```bash
    python main.py -t -s
    ```
+   ```-t``` is the flag for commandline mode, it needs to be added.
+   ```-s``` is the flag for immediate display of figures generated, figures will be saves in ```./figures``` regardless.
+
+## ➤ How to Use
+When in the script, you will be presented with a menu to select the udnerlying data for further caluclations and visualisations. Select the menus by typing in the corresponding number and pressing ```enter```.
+![Main Menu](./images/main-menu.png)
+Within the submenu you can choose from various ways to anaylze, explore and display the data.
+![Sub Menu](./images/sub-menu.png)
+When needing to select a country, there is an autocomplete feature. Just type the first letters of a country and it will suggest completions. Select the completion with the arrow keys and press enter.
+![Sub Menu](./images/function.png)
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#files-in-this-repository)
