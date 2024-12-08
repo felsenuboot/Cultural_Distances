@@ -257,9 +257,8 @@ def terminal_interface(data, title, show):
             clear_terminal()
             country = dynamic_country_selection(f" {title} - Select a country", distance_df.index.tolist())
             clear_terminal()
-            max, min= find_max_min_distances_for_country(title, distance_df, country)
-            
-            panel = Panel(Align.center(f"[bold green]:sparkle: {max} :sparkle:\n:sparkle: {min} :sparkle:[/bold green][red]\n\n Press Enter to return to the submenu..."), title=f"Distances for: {country}", padding=(1, 2))
+            max, min, avg= find_max_min_distances_for_country(title, distance_df, country)
+            panel = Panel(Align.center(f"[bold green]:sparkle: {max} :sparkle:\n:sparkle: {min} :sparkle:\n:sparkle: {avg} :sparkle:[/bold green][red]\n\n Press Enter to return to the submenu..."), title=f"Distances for: {country}", padding=(1, 2))
             console.print(panel)
             input()
         elif choice == "7":

@@ -235,6 +235,7 @@ def find_max_min_distances_for_country(title, distance_df, country):
     # Find maximum and minimum distances
     max_distance = distances.max()
     min_distance = distances.min()
+    average_distance = distances.mean()
 
     # Get corresponding countries
     max_country = distances.idxmax()
@@ -242,8 +243,9 @@ def find_max_min_distances_for_country(title, distance_df, country):
 
     max = f"  Maximum distance: {max_distance:.2f} with {max_country}"
     min = f"  Minimum distance: {min_distance:.2f} with {min_country}"
+    avg = f"Average distance: {average_distance  :.2f}"
 
-    return max, min
+    return max, min, avg
 
 def plot_country_distance_boxplot_with_highlight(distance_df, country, highlight_countries, title="", show=False):
     """
