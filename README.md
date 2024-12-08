@@ -96,17 +96,6 @@ pip install -r requirements.txt
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#dependencies)
 
-## ➤ Dependencies
-
-The project relies on the following Python packages:
-
-- Data manipulation and analysis: `numpy`, `pandas`, `openpyxl`
-- Visualization: `matplotlib`, `seaborn`
-- Machine Learning: `scikit-learn`
-- Others: `networkx`, `joblib`, `scipy`
-
-For a complete list, refer to the `requirements.txt` file.
-
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#notes)
 
