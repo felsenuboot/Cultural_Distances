@@ -58,7 +58,7 @@ When needing to select a country, there is an autocomplete feature. Just type th
 
 ## ➤ Files in This Repository
 
-### 1. `convert_data.py`
+#### 1. `convert_data.py`
 
 This script contains functions to process raw data, transform it into a usable format, and prepare it for analysis or visualization. The script likely handles tasks such as:
 
@@ -66,14 +66,26 @@ This script contains functions to process raw data, transform it into a usable f
 - Format conversions
 - Data validation
 
-### 2. `main.py`
+#### 2. `main.py`
 
 This script serves as the entry point for the project. 
 
 - Running analysis or model training pipelines
 - Generating visualizations or reports based on processed data
+```bash
+python main.py -t    #will start the application in terminal mode
+python main.py -t -s #will start the application in terminal mode and display generated figures right away
+```
 
-### 3. `requirements.txt`
+#### 3. `functions.py`
+
+This script contains the majority of calculation and visualization functions.
+
+#### 4. `terminal.py`
+
+This script serves as the terminal interface.
+
+#### 5. `requirements.txt`
 
 This file lists all the Python dependencies required to run the project. Use it to install the necessary libraries with the following command:
 
