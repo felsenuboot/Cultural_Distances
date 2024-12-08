@@ -29,7 +29,7 @@ This repository contains Python scripts and associated files for processing, ana
    Windows
    ```cmd
    python3 -m venv .venv
-   C:\> .venv\Scripts\activate.bat
+   .venv\Scripts\activate.bat
    ```
    
 2. **Install Dependencies**
