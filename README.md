@@ -5,6 +5,32 @@
 
 This repository contains Python scripts and associated files for processing, analyzing, and visualizing cultural data. The project uses various Python libraries for data manipulation and machine learning.
 
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#how-to-use)
+
+## ➤ How to Use
+
+> [!NOTE]  
+> Make sure python is installed. 
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/felsenuboot/Cultural_Distances.git
+   cd Cultural_Distances
+   ```
+
+2. **Install Dependencies**
+   Make sure you have Python installed (version >= 3.8). Then, run:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Run the Scripts**
+   ```bash
+   python main.py -t -s
+   ```
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#files-in-this-repository)
 
@@ -46,30 +72,6 @@ The project relies on the following Python packages:
 - Others: `networkx`, `joblib`, `scipy`
 
 For a complete list, refer to the `requirements.txt` file.
-
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#how-to-use)
-
-## ➤ How to Use
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone <repository_url>
-   cd <repository_name>
-   ```
-
-2. **Install Dependencies**
-   Make sure you have Python installed (version >= 3.8). Then, run:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the Scripts**
-   ```bash
-   python main.py -t -s
-   ```
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#notes)
