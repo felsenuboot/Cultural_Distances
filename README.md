@@ -1,112 +1,110 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#cultural-distances-project-overview)
+<div align="center">
+  <img src="docs/icon.svg" width="128" alt="">
+  <h1>Cultural Distances</h1>
+  <p>How far apart are two countries, culturally? Hofstede and the Culture Map, measured</p>
+</div>
 
-# ➤ Cultural Distances: Project Overview
+Cultural Distances is a terminal tool that turns two cultural dimension
+models into numbers you can compare: Geert Hofstede's six dimensions and
+Erin Meyer's eight Culture Map scales. It computes a distance between every
+pair of countries in each framework, then lets you look at the result as a
+network graph, as clusters, as box plots with the pairs you care about
+highlighted, or as a CSV. Python, pandas, scikit-learn and matplotlib, with a
+menu built on rich and prompt_toolkit.
 
-This repository contains Python scripts and associated files for processing, analyzing, and visualizing cultural data. The project uses various Python libraries for data manipulation and machine learning.
+It was written for my master's thesis at Philipps-Universität Marburg
+(*The Effect of Cultural Distance on Overpayment in Cross-Border M&A: A
+Comparative Analysis through German and Japanese Case Studies*, 2024), where
+the distances between acquirer and target countries were one of the inputs.
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#how-to-use)
+<p align="center">
+  <img src="docs/card.png" width="800" alt="Two countries as markers on six dimension tracks, the distance between them on each track drawn in red">
+</p>
 
-## ➤ How to Install
+> [!NOTE]
+> A research tool: it does what the thesis needed and not much more, and the
+> country lists are those of the two datasets. No warranty; not affiliated
+> with Hofstede Insights or with Erin Meyer.
 
-> [!NOTE]  
->    Make sure you have Python installed (version >= 3.8): https://www.python.org/
+## Features
 
-1. **Clone the Repository**
+- 📏 **Distances.** The standardised Euclidean distance between every pair
+  of countries, each dimension scaled by its variance so no single scale
+  dominates; look one pair up, or export the whole matrix as CSV.
+- 🕸️ **Network graph.** The countries as nodes, distances as edges, for a
+  selection or for all.
+- 🧩 **Clusters.** K-means over the distance matrix, drawn in two dimensions
+  by MDS or by t-SNE, with chosen countries highlighted.
+- 📦 **Box plots.** The distribution of all distances, or of one country's
+  distances to everyone else, with named pairs marked on it; and one figure
+  with both frameworks side by side.
+- 🔎 **Extremes.** The most and least distant pairs overall, or for one
+  country.
+- 📋 **Dimension tables.** The raw scores of a set of countries as a table,
+  copied to the clipboard so it pastes into Word as a table.
+- ⌨️ **Autocomplete.** Type the first letters of a country and pick the
+  completion with the arrow keys.
 
-   ```bash
-   git clone https://github.com/felsenuboot/Cultural_Distances.git
-   cd Cultural_Distances
-   ```
+<p align="center">
+  <img src="images/both-frameworks-boxplot.png" width="700" alt="Box plots of all distances in both frameworks, with Germany–Austria marked in each">
+</p>
 
-2. _(Optional)_ **Create a virtual environment**
-   Mac:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
+## Install
 
-   Windows
-   ```cmd
-   python3 -m venv .venv
-   .venv\Scripts\activate.bat
-   ```
-   
-2. **Install Dependencies**
+Python 3.8 or newer.
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the Scripts**
-   ```bash
-   python main.py -t -s
-   ```
-   ```-t``` is the flag for commandline mode, it needs to be added.
-   ```-s``` is the flag for immediate display of figures generated, figures will be saves in ```./figures``` regardless.
-
-## ➤ How to Use
-When in the script, you will be presented with a menu to select the udnerlying data for further caluclations and visualisations. Select the menus by typing in the corresponding number and pressing ```enter```.
-![Main Menu](./images/main-menu.png)
-Within the submenu you can choose from various ways to anaylze, explore and display the data.
-![Sub Menu](./images/sub-menu.png)
-When needing to select a country, there is an autocomplete feature. Just type the first letters of a country and it will suggest completions. Select the completion with the arrow keys and press enter.
-![Sub Menu](./images/function.png)
-
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#files-in-this-repository)
-
-## ➤ Files in This Repository
-
-#### 1. `convert_data.py`
-
-This script contains functions to process raw data, transform it into a usable format, and prepare it for analysis or visualization. The script likely handles tasks such as:
-
-- Data cleaning
-- Format conversions
-- Data validation
-
-#### 2. `main.py`
-
-This script serves as the entry point for the project. 
-
-- Running analysis or model training pipelines
-- Generating visualizations or reports based on processed data
-```bash
-python main.py -t    #will start the application in terminal mode
-python main.py -t -s #will start the application in terminal mode and display generated figures right away
 ```
-
-#### 3. `functions.py`
-
-This script contains the majority of calculation and visualization functions.
-
-#### 4. `terminal.py`
-
-This script serves as the terminal interface.
-
-#### 5. `requirements.txt`
-
-This file lists all the Python dependencies required to run the project. Use it to install the necessary libraries with the following command:
-
-```bash
+git clone https://github.com/felsenuboot/Cultural_Distances.git
+cd Cultural_Distances
+python -m venv .venv && source .venv/bin/activate   # .venv\Scripts\activate.bat on Windows
 pip install -r requirements.txt
+python main.py -t -s
 ```
 
+`-t` starts the terminal interface (it is the only mode, and the flag is
+required). `-s` shows each figure as it is generated; with or without it,
+every figure is saved to `figures/`.
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#notes)
+`requirements.txt` is a frozen environment and pulls in more than the tool
+needs. The actual dependencies are pandas, numpy, scipy, scikit-learn,
+networkx, matplotlib, seaborn, rich, prompt_toolkit, pyperclip and tabulate.
 
-## ➤ Notes
+## Use
 
-- Ensure your input data meets the expected format required by `convert_data.py`. Check the script for details on input and output specifications.
-- If any issues arise, ensure all dependencies are installed and compatible with your Python version.
+The main menu picks the framework, or the combined box plot of both:
 
+![The main menu](images/main-menu.png)
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#contributing)
+The submenu has the analyses listed above for that framework:
 
-## ➤ Contributing
+![The submenu](images/sub-menu.png)
 
-Feel free to contribute by submitting pull requests. Make sure to:
+Wherever a country is asked for, the prompt completes it:
 
-- Document any new functions or features.
-- Test your changes thoroughly.
+![Country autocomplete](images/function.png)
+
+## The data
+
+| File | Contents |
+| --- | --- |
+| `data/hofstede_data.json` | Hofstede's six dimensions per country: power distance (`pdi`), individualism (`idv`), motivation towards achievement (`mas`), uncertainty avoidance (`uai`), long-term orientation (`ltowvs`), indulgence (`ivr`). Regions such as "Africa East" are included as the source lists them. |
+| `data/culture_map_data.json` | The eight Culture Map scales per country: communicating, evaluating, leading, deciding, trusting, disagreeing, scheduling, persuading. |
+| `data/*_distances.csv` | The computed distance matrices, as exported by the tool. |
+
+A score of `-1` means the source has no value; a dimension with a missing
+value in any country is dropped before the distances are computed, so the
+two frameworks are each compared on complete columns only.
+
+The Hofstede scores are those published by Hofstede Insights; the Culture
+Map positions are Erin Meyer's, from *The Culture Map* (2014). Both remain
+the property of their authors; this repository only carries them for the
+analysis.
+
+## Files
+
+| File | Role |
+| --- | --- |
+| `main.py` | Entry point, the main menu, the combined box plot |
+| `terminal.py` | The per-framework submenu and the country selection prompts |
+| `functions.py` | Distances, graphs, clusters, box plots, tables and the CSV export |
+| `convert_data.py` | Turns the raw source data into the JSON files in `data/` |
